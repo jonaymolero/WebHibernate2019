@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-dic-2018 12:05:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Pojos.Reserva" table="RESERVA" schema="S2DAM20" optimistic-lock="version">
+        <id name="nreserva" type="short">
+            <column name="NRESERVA" precision="3" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="habitacion" class="Pojos.Habitacion" fetch="select">
+            <column name="NHABITACION" length="3" not-null="true" />
+        </many-to-one>
+        <property name="fechae" type="string">
+            <column name="FECHAE" length="15" not-null="true" />
+        </property>
+        <property name="fechas" type="string">
+            <column name="FECHAS" length="15" not-null="true" />
+        </property>
+        <property name="dni" type="string">
+            <column name="DNI" length="12" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

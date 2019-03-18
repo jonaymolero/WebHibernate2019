@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-dic-2018 12:05:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Pojos.Habitacion" table="HABITACION" schema="S2DAM20" optimistic-lock="version">
+        <id name="nhabitacion" type="string">
+            <column name="NHABITACION" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="npersonas" type="byte">
+            <column name="NPERSONAS" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="PRECIO" precision="5" not-null="true" />
+        </property>
+        <property name="ocupada" type="boolean">
+            <column name="OCUPADA" precision="1" scale="0" not-null="true" />
+        </property>
+        <set name="reservas" table="RESERVA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NHABITACION" length="3" not-null="true" />
+            </key>
+            <one-to-many class="Pojos.Reserva" />
+        </set>
+        <set name="ocupacions" table="OCUPACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NHABITACION" length="3" not-null="true" />
+            </key>
+            <one-to-many class="Pojos.Ocupacion" />
+        </set>
+    </class>
+</hibernate-mapping>
